@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sqflite_application/common/utils/constants.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:sqflite_application/common/widgets/reusable_text.dart';
 import '../../../common/widgets/custom_otline_btn.dart';
 import '../../../common/widgets/custom_text_field.dart';
@@ -17,6 +18,19 @@ class LoginPage extends ConsumerStatefulWidget {
 
 class _LoginPageState extends ConsumerState<LoginPage> {
   final phone = TextEditingController();
+  Country country = Country(
+    phoneCode: "1",
+    countryCode: "US",
+    e164Sc: 0,
+    geographic: true,
+    level: 1,
+    name: "USA",
+    example: "USA",
+    displayName: "United States",
+    displayNameNoCountryCode: "US",
+    e164Key: "",
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,11 +61,24 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             Center(
               child: CustomTextField(
                 prefixIcon: Container(
-                  padding: const EdgeInsets.all(4),
+                  padding: const EdgeInsets.all(14),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      showCountryPicker(
+                          context: context,
+                          countryListTheme: CountryListThemeData(
+                              backgroundColor: AppConst.kLight,
+                              bottomSheetHeight: AppConst.kHeight * 0.6,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(AppConst.kRadius),
+                                topRight: Radius.circular(AppConst.kRadius),
+                              )),
+                          onSelect: (code) {
+                            setState(() {});
+                          });
+                    },
                     child: ReusableText(
-                        text: "+1",
+                        text: "${country.flagEmoji} + ${country.phoneCode}",
                         style: appstyle(18, AppConst.kBkDark, FontWeight.bold)),
                   ),
                 ),
@@ -64,12 +91,15 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             const SizedBox(
               height: 20,
             ),
-            CustomOutlineButton(
-                width: AppConst.kWidth * 0.8,
-                height: AppConst.kHeight * 0.07,
-                color: AppConst.kBkDark,
-                color2: AppConst.kLight,
-                text: "Send Code"),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: CustomOutlineButton(
+                  width: AppConst.kWidth * 0.8,
+                  height: AppConst.kHeight * 0.07,
+                  color: AppConst.kBkDark,
+                  color2: AppConst.kLight,
+                  text: "Send Code"),
+            ),
           ],
         ),
       )),
