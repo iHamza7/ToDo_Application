@@ -19,67 +19,85 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        automaticallyImplyLeading: false,
-        bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(85),
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ReusableText(
-                        text: "Dashboard",
-                        style: appstyle(18, AppConst.kLight, FontWeight.bold),
-                      ),
-                      Container(
-                        width: 25.w,
-                        height: 25.h,
-                        decoration: const BoxDecoration(
-                          color: AppConst.kLight,
-                          borderRadius: BorderRadius.all(Radius.circular(9)),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(85),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ReusableText(
+                          text: "Dashboard",
+                          style: appstyle(18, AppConst.kLight, FontWeight.bold),
                         ),
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: const Icon(
-                            Icons.add,
-                            color: AppConst.kBkDark,
+                        Container(
+                          width: 25.w,
+                          height: 25.h,
+                          decoration: const BoxDecoration(
+                            color: AppConst.kLight,
+                            borderRadius: BorderRadius.all(Radius.circular(9)),
                           ),
-                        ),
-                      )
-                    ],
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: const Icon(
+                              Icons.add,
+                              color: AppConst.kBkDark,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                CustomTextField(
-                  hintText: "Search",
-                  controller: search,
-                  suffixIcon: const Icon(FontAwesome.sliders),
-                  prefixIcon: Container(
-                    padding: EdgeInsets.all(14.h),
-                    child: GestureDetector(
-                      onTap: null,
-                      child: const Icon(
-                        AntDesign.search1,
-                        color: AppConst.kGreyLight,
+                  const SizedBox(height: 20),
+                  CustomTextField(
+                    hintText: "Search",
+                    controller: search,
+                    suffixIcon: const Icon(FontAwesome.sliders),
+                    prefixIcon: Container(
+                      padding: EdgeInsets.all(14.h),
+                      child: GestureDetector(
+                        onTap: null,
+                        child: const Icon(
+                          AntDesign.search1,
+                          color: AppConst.kGreyLight,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-              ],
-            )),
-      ),
-      body: Center(
-        child: ReusableText(
-          text: 'Todo with riverpod',
-          style: appstyle(26, AppConst.kBlueLight, FontWeight.bold),
+                  const SizedBox(height: 20),
+                ],
+              )),
         ),
-      ),
-    );
+        body: SafeArea(
+            child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: ListView(
+            children: [
+              const SizedBox(
+                height: 25,
+              ),
+              Row(
+                children: [
+                  const Icon(
+                    FontAwesome.tasks,
+                    color: AppConst.kLight,
+                    size: 20,
+                  ),
+                  const SizedBox(width: 10),
+                  ReusableText(
+                      text: "Today's Task",
+                      style: appstyle(18, AppConst.kLight, FontWeight.bold))
+                ],
+              ),
+              const SizedBox(height: 25),
+            ],
+          ),
+        )));
   }
 }
