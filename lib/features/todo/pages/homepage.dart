@@ -154,7 +154,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 child: ClipRRect(
                   borderRadius:
                       BorderRadius.all(Radius.circular(AppConst.kRadius)),
-                  child: TabBarView(children: [
+                  child: TabBarView(controller: tabController, children: [
                     Container(
                       height: AppConst.kHeight * 0.3,
                       color: AppConst.kBkDark,
