@@ -104,19 +104,67 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     color: AppConst.kLight,
                     borderRadius:
                         BorderRadius.all(Radius.circular(AppConst.kRadius))),
-                child: TabBar(tabs: [
-                  Tab(
-                    child: SizedBox(
-                      width: AppConst.kWidth * 0.5,
-                      child: Center(
-                        child: ReusableText(
-                            text: "Pending",
-                            style: appstyle(
-                                16, AppConst.kBkDark, FontWeight.bold)),
+                child: TabBar(
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicator: BoxDecoration(
+                        color: AppConst.kGreyLight,
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(AppConst.kRadius))),
+                    controller: tabController,
+                    labelPadding: EdgeInsets.zero,
+                    isScrollable: false,
+                    labelColor: AppConst.kBlueLight,
+                    labelStyle:
+                        appstyle(24, AppConst.kBkLight, FontWeight.w700),
+                    unselectedLabelColor: AppConst.kLight,
+                    tabs: [
+                      Tab(
+                        child: SizedBox(
+                          width: AppConst.kWidth * 0.5,
+                          child: Center(
+                            child: ReusableText(
+                              text: "Pending",
+                              style: appstyle(
+                                  16, AppConst.kBkDark, FontWeight.bold),
+                            ),
+                          ),
+                        ),
                       ),
+                      Tab(
+                        child: Container(
+                          padding: EdgeInsets.only(left: 30.w),
+                          width: AppConst.kWidth * 0.5,
+                          child: Center(
+                            child: ReusableText(
+                              text: "Completed",
+                              style: appstyle(
+                                  16, AppConst.kBkDark, FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      )
+                    ]),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: AppConst.kWidth,
+                height: AppConst.kHeight * 0.3,
+                child: ClipRRect(
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(AppConst.kRadius)),
+                  child: TabBarView(children: [
+                    Container(
+                      height: AppConst.kHeight * 0.3,
+                      color: AppConst.kBkDark,
                     ),
-                  )
-                ]),
+                    Container(
+                      height: AppConst.kHeight * 0.3,
+                      color: AppConst.kBkDark,
+                    ),
+                  ]),
+                ),
               )
             ],
           ),
