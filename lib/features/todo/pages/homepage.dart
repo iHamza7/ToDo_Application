@@ -173,7 +173,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               const XpansionTile(
                   text: "Tomorrow's Task",
                   text2: "Tomorrow's tasks are shown here",
-                  children: [])
+                  children: []),
+              const SizedBox(
+                height: 20,
+              ),
+              XpansionTile(
+                  text: DateTime.now()
+                      .add(const Duration(days: 2))
+                      .toString()
+                      .substring(5, 10),
+                  text2: "Day after Tomorrow's tasks",
+                  children: const [])
             ],
           ),
         )));

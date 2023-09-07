@@ -28,7 +28,7 @@ class BottomTitles extends StatelessWidget {
                   width: 5,
                   decoration: BoxDecoration(
                       //TODO: dynamic colors
-                      color: AppConst.kLight,
+                      color: AppConst.kGreen,
                       borderRadius:
                           BorderRadius.all(Radius.circular(AppConst.kRadius))),
                 );
