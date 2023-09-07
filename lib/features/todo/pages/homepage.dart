@@ -157,11 +157,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   child: TabBarView(controller: tabController, children: [
                     Container(
                       height: AppConst.kHeight * 0.3,
-                      color: AppConst.kBkDark,
+                      color: AppConst.kGreen,
                     ),
                     Container(
                       height: AppConst.kHeight * 0.3,
-                      color: AppConst.kBkDark,
+                      color: AppConst.kGreyBk,
                     ),
                   ]),
                 ),
