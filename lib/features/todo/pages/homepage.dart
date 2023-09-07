@@ -6,6 +6,7 @@ import 'package:sqflite_application/common/widgets/reusable_text.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 import '../../../common/widgets/custom_text_field.dart';
+import '../../../common/widgets/expansion_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -165,7 +166,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ),
                   ]),
                 ),
-              )
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const XpansionTile(
+                  text: "Tomorrow's Task",
+                  text2: "Tomorrow's tasks are shown here",
+                  children: [])
             ],
           ),
         )));
