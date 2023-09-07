@@ -14,11 +14,14 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  late final TabController tabController =
+      TabController(length: 2, vsync: this);
   final TextEditingController search = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: AppConst.kBkDark,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
@@ -96,6 +99,25 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               const SizedBox(height: 25),
+              Container(
+                decoration: BoxDecoration(
+                    color: AppConst.kLight,
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(AppConst.kRadius))),
+                child: TabBar(tabs: [
+                  Tab(
+                    child: SizedBox(
+                      width: AppConst.kWidth * 0.5,
+                      child: Center(
+                        child: ReusableText(
+                            text: "Pending",
+                            style: appstyle(
+                                16, AppConst.kBkDark, FontWeight.bold)),
+                      ),
+                    ),
+                  )
+                ]),
+              )
             ],
           ),
         )));

@@ -12,6 +12,7 @@ class OtpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppConst.kBkDark,
       appBar: AppBar(backgroundColor: Colors.transparent),
       body: SafeArea(
           child: Column(
@@ -33,14 +34,17 @@ class OtpPage extends StatelessWidget {
           const SizedBox(
             height: 26,
           ),
-          Pinput(
-            length: 6,
-            onChanged: (value) {
-              if (value.length == 6) {}
-            },
-            onSubmitted: (value) {
-              if (value.length == 6) {}
-            },
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Pinput(
+              length: 6,
+              onChanged: (value) {
+                if (value.length == 6) {}
+              },
+              onSubmitted: (value) {
+                if (value.length == 6) {}
+              },
+            ),
           )
         ],
       )),
