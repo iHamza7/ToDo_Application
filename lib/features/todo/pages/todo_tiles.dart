@@ -56,7 +56,7 @@ class TodoTile extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.all(8.h),
                       child: SizedBox(
-                        width: AppConst.kWidth,
+                        width: AppConst.kWidth * 0.6,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
