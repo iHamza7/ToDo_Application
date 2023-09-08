@@ -14,6 +14,7 @@ class TodoTile extends StatelessWidget {
   final String? end;
   final Widget? editWidget;
   final void Function()? delete;
+  final Widget? switcher;
 
   const TodoTile(
       {super.key,
@@ -23,7 +24,8 @@ class TodoTile extends StatelessWidget {
       this.start,
       this.end,
       this.editWidget,
-      this.delete});
+      this.delete,
+      this.switcher});
 
   @override
   Widget build(BuildContext context) {
@@ -117,6 +119,10 @@ class TodoTile extends StatelessWidget {
                       ),
                     )
                   ],
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 0.h),
+                  child: switcher,
                 )
               ],
             ),

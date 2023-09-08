@@ -161,7 +161,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       height: AppConst.kHeight * 0.3,
                       color: AppConst.kGreyBk,
                       child: ListView(
-                        children: const [TodoTile()],
+                        children: [
+                          TodoTile(
+                            start: "3:00",
+                            end: "5:00",
+                            switcher: Switch.adaptive(
+                                value: true, onChanged: (value) {}),
+                          )
+                        ],
                       ),
                     ),
                     Container(
