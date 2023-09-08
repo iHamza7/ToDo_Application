@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 import '../../../common/utils/constants.dart';
 import '../../../common/widgets/appstyle.dart';
@@ -12,6 +13,7 @@ class TodoTile extends StatelessWidget {
   final String? start;
   final String? end;
   final Widget? editWidget;
+  final void Function()? delete;
 
   const TodoTile(
       {super.key,
@@ -20,7 +22,8 @@ class TodoTile extends StatelessWidget {
       this.description,
       this.start,
       this.end,
-      this.editWidget});
+      this.editWidget,
+      this.delete});
 
   @override
   Widget build(BuildContext context) {
@@ -98,6 +101,12 @@ class TodoTile extends StatelessWidget {
                                   children: [
                                     SizedBox(
                                       child: editWidget,
+                                    ),
+                                    const SizedBox(width: 20),
+                                    GestureDetector(
+                                      onTap: delete,
+                                      child: const Icon(
+                                          MaterialCommunityIcons.delete_circle),
                                     )
                                   ],
                                 ),

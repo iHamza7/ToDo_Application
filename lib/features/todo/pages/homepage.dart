@@ -7,6 +7,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 import '../../../common/widgets/custom_text_field.dart';
 import '../../../common/widgets/expansion_tile.dart';
+import 'todo_tiles.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -159,6 +160,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     Container(
                       height: AppConst.kHeight * 0.3,
                       color: AppConst.kGreen,
+                      child: ListView(
+                        children: const [TodoTile()],
+                      ),
                     ),
                     Container(
                       height: AppConst.kHeight * 0.3,
