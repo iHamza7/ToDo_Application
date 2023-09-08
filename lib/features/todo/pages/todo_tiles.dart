@@ -9,8 +9,16 @@ class TodoTile extends StatelessWidget {
   final Color? color;
   final String? title;
   final String? description;
+  final String? start;
+  final String? end;
 
-  const TodoTile({super.key, this.color, this.title, this.description});
+  const TodoTile(
+      {super.key,
+      this.color,
+      this.title,
+      this.description,
+      this.start,
+      this.end});
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +82,15 @@ class TodoTile extends StatelessWidget {
                                         color: AppConst.kGreyDK,
                                       ),
                                       borderRadius: BorderRadius.all(
-                                          Radius.circular(AppConst.kRadius))),
-                                )
+                                          Radius.circular(AppConst.kRadius)),
+                                      color: AppConst.kBkDark),
+                                  child: Center(
+                                    child: ReusableText(
+                                        text: "$start | $end",
+                                        style: appstyle(12, AppConst.kLight,
+                                            FontWeight.normal)),
+                                  ),
+                                ),
                               ],
                             )
                           ],
