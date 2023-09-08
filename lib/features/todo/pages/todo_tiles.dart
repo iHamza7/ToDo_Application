@@ -8,7 +8,9 @@ import '../../../common/widgets/reusable_text.dart';
 class TodoTile extends StatelessWidget {
   final Color? color;
   final String? title;
-  const TodoTile({super.key, this.color, this.title});
+  final String? description;
+
+  const TodoTile({super.key, this.color, this.title, this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +51,32 @@ class TodoTile extends StatelessWidget {
                               text: title ?? "Title of TODO",
                               style: appstyle(
                                   18, AppConst.kLight, FontWeight.bold),
+                            ),
+                            const SizedBox(
+                              height: 3,
+                            ),
+                            ReusableText(
+                              text: description ?? "Description of TODO",
+                              style: appstyle(
+                                  12, AppConst.kLight, FontWeight.bold),
+                            ),
+                            const SizedBox(
+                              height: 3,
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  width: AppConst.kWidth * 0.3,
+                                  height: 25.h,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                        width: 0.3,
+                                        color: AppConst.kGreyDK,
+                                      ),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(AppConst.kRadius))),
+                                )
+                              ],
                             )
                           ],
                         ),
