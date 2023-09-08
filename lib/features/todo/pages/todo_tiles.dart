@@ -11,6 +11,7 @@ class TodoTile extends StatelessWidget {
   final String? description;
   final String? start;
   final String? end;
+  final Widget? editWidget;
 
   const TodoTile(
       {super.key,
@@ -18,7 +19,8 @@ class TodoTile extends StatelessWidget {
       this.title,
       this.description,
       this.start,
-      this.end});
+      this.end,
+      this.editWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +92,14 @@ class TodoTile extends StatelessWidget {
                                         style: appstyle(12, AppConst.kLight,
                                             FontWeight.normal)),
                                   ),
+                                ),
+                                const SizedBox(width: 20),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      child: editWidget,
+                                    )
+                                  ],
                                 ),
                               ],
                             )
