@@ -4,19 +4,22 @@ import 'package:sqflite_application/common/utils/constants.dart';
 import 'package:sqflite_application/common/widgets/appstyle.dart';
 import 'package:sqflite_application/common/widgets/reusable_text.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sqflite_application/features/todo/controllers/xpansion_provider.dart';
 
 import '../../../common/widgets/custom_text_field.dart';
 import '../../../common/widgets/expansion_tile.dart';
 import 'todo_tiles.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+class _HomePageState extends ConsumerState<HomePage>
+    with TickerProviderStateMixin {
   late final TabController tabController =
       TabController(length: 2, vsync: this);
   final TextEditingController search = TextEditingController();
@@ -181,10 +184,31 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               const SizedBox(
                 height: 20,
               ),
-              const XpansionTile(
+              XpansionTile(
                   text: "Tomorrow's Task",
                   text2: "Tomorrow's tasks are shown here",
-                  children: []),
+                  onExpansionChanged: (bool expanded) {
+                    ref
+                        .watch(xpansionStateProvider.notifier)
+                        .setStart(!expanded);
+                  },
+                  trailing: Padding(
+                      padding: EdgeInsets.only(right: 12.0.w),
+                      child: ref.watch(xpansionStateProvider)
+                          ? const Icon(AntDesign.circledown,
+                              color: AppConst.kLight)
+                          : const Icon(
+                              AntDesign.clockcircleo,
+                              color: AppConst.kBlueLight,
+                            )),
+                  children: [
+                    TodoTile(
+                      start: "3:00",
+                      end: "5:00",
+                      switcher:
+                          Switch.adaptive(value: true, onChanged: (value) {}),
+                    )
+                  ]),
               const SizedBox(
                 height: 20,
               ),
@@ -194,7 +218,28 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       .toString()
                       .substring(5, 10),
                   text2: "Day after Tomorrow's tasks",
-                  children: const [])
+                  onExpansionChanged: (bool expanded) {
+                    ref
+                        .watch(xpansionState0Provider.notifier)
+                        .setStart(!expanded);
+                  },
+                  trailing: Padding(
+                      padding: EdgeInsets.only(right: 12.0.w),
+                      child: ref.watch(xpansionState0Provider)
+                          ? const Icon(AntDesign.circledown,
+                              color: AppConst.kLight)
+                          : const Icon(
+                              AntDesign.clockcircleo,
+                              color: AppConst.kBlueLight,
+                            )),
+                  children: [
+                    TodoTile(
+                      start: "3:00",
+                      end: "5:00",
+                      switcher:
+                          Switch.adaptive(value: true, onChanged: (value) {}),
+                    )
+                  ])
             ],
           ),
         )));
