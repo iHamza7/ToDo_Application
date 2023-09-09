@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart' as sql;
 
 import '../models/task_model.dart';
@@ -62,5 +63,41 @@ class DbHelper {
   static Future<List<Map<String, dynamic>>> getItem(int id) async {
     final db = await DbHelper.db();
     return db.query("todos", where: "id = ? ", whereArgs: [id], limit: 1);
+  }
+
+  //updating the database after some changes
+
+  static Future<int> updateItem(
+    int id,
+    String title,
+    String description,
+    int isCompleted,
+    String date,
+    String startTime,
+    String endTime,
+  ) async {
+    final db = await DbHelper.db();
+    final data = {
+      "id": id,
+      "title": title,
+      "description": description,
+      "isCompleted": isCompleted,
+      "date": date,
+      "startTime": startTime,
+      "endTime": endTime,
+    };
+    final results =
+        await db.update("todos", data, where: "id = ? ", whereArgs: [id]);
+    return results;
+  }
+
+  //deleting the data
+  static Future<void> deleteItem(int id) async {
+    final db = await DbHelper.db();
+    try {
+      db.delete("todos", where: "id = ?", whereArgs: [id]);
+    } catch (e) {
+      debugPrint("unable to delete $e");
+    }
   }
 }
