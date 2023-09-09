@@ -56,4 +56,11 @@ class DbHelper {
     final db = await DbHelper.db();
     return db.query("todos", orderBy: 'id');
   }
+
+  //getting only single user or table data
+
+  static Future<List<Map<String, dynamic>>> getItem(int id) async {
+    final db = await DbHelper.db();
+    return db.query("todos", where: "id = ? ", whereArgs: [id], limit: 1);
+  }
 }
