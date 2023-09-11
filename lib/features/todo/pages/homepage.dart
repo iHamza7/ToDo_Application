@@ -9,6 +9,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../common/widgets/custom_text_field.dart';
 import '../../../common/widgets/expansion_tile.dart';
 import '../controllers/xpansion_provider.dart';
+import 'add_task.dart';
 import 'todo_tiles.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -52,7 +53,12 @@ class _HomePageState extends ConsumerState<HomePage>
                             borderRadius: BorderRadius.all(Radius.circular(9)),
                           ),
                           child: GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const AddTask()));
+                            },
                             child: const Icon(
                               Icons.add,
                               color: AppConst.kBkDark,

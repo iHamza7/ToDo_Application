@@ -12,8 +12,8 @@ class TaskModel {
   String? date;
   String? startTime;
   String? endTime;
-  String? remind;
-  int? repeat;
+  int? remind;
+  String? repeat;
 
   TaskModel({
     this.id,
