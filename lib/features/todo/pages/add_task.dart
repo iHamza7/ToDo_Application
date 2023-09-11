@@ -143,6 +143,8 @@ class _AddTaskState extends ConsumerState<AddTask> {
                     ref.read(finishTimeStateProvider.notifier).setFinish('');
 
                     Navigator.pop(context);
+                  } else {
+                    debugPrint('please enter');
                   }
                 },
                 width: AppConst.kWidth * 0.4,
