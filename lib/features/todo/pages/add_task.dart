@@ -135,7 +135,7 @@ class _AddTaskState extends ConsumerState<AddTask> {
                       endTime: finishTime.substring(10, 16),
                       date: scheduleDate,
                       remind: 0,
-                      repeat: "yes you ",
+                      repeat: "yes you c ",
                     );
                     ref.read(todoStateProvider.notifier).addItem(taskModel);
                     ref.read(dateStateProvider.notifier).setDate('');
