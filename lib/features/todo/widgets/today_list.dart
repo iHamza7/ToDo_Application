@@ -36,7 +36,18 @@ class TodyList extends ConsumerWidget {
           description: data.description,
           start: data.startTime,
           end: data.endTime,
-          switcher: Switch(value: isCompleted, onChanged: (value) {}),
+          switcher: Switch(
+              value: isCompleted,
+              onChanged: (value) {
+                ref.read(todoStateProvider.notifier).markAsCompleted(
+                    data.id ?? 0,
+                    data.title!,
+                    data.description!,
+                    1,
+                    data.date!,
+                    data.startTime!,
+                    data.endTime!);
+              }),
         );
       },
     );
