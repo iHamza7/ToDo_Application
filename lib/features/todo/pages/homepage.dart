@@ -11,6 +11,7 @@ import '../../../common/widgets/expansion_tile.dart';
 import '../controllers/todo/todo_provider.dart';
 import '../controllers/xpansion_provider.dart';
 import '../widgets/today_list.dart';
+import '../widgets/tomorrow_task.dart';
 import 'add_task.dart';
 import 'todo_tiles.dart';
 
@@ -184,31 +185,7 @@ class _HomePageState extends ConsumerState<HomePage>
               const SizedBox(
                 height: 20,
               ),
-              XpansionTile(
-                  text: "Tomorrow's Task",
-                  text2: "Tomorrow's tasks are shown here",
-                  onExpansionChanged: (bool expanded) {
-                    ref
-                        .watch(xpansionStateProvider.notifier)
-                        .setStart(!expanded);
-                  },
-                  trailing: Padding(
-                      padding: EdgeInsets.only(right: 12.0.w),
-                      child: ref.watch(xpansionStateProvider)
-                          ? const Icon(AntDesign.circledown,
-                              color: AppConst.kLight)
-                          : const Icon(
-                              AntDesign.clockcircleo,
-                              color: AppConst.kBlueLight,
-                            )),
-                  children: [
-                    TodoTile(
-                      start: "3:00",
-                      end: "5:00",
-                      switcher:
-                          Switch.adaptive(value: true, onChanged: (value) {}),
-                    )
-                  ]),
+              const TomorrowTask(),
               const SizedBox(
                 height: 20,
               ),
