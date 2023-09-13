@@ -262,8 +262,9 @@ class TodyList extends ConsumerWidget {
       itemBuilder: (context, int index) {
         final data = todayList[index];
         bool isCompleted = ref.read(todoStateProvider.notifier).getStatus(data);
+        dynamic color = ref.read(todoStateProvider.notifier).getRandomColor();
         return TodoTile(
-          color: AppConst.kGreen,
+          color: color,
           title: data.title,
           description: data.description,
           start: data.startTime,
