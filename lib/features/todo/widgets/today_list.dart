@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import '../../../common/models/task_model.dart';
 import '../controllers/todo/todo_provider.dart';
 import '../pages/todo_tiles.dart';
@@ -22,7 +22,15 @@ class TodyList extends ConsumerWidget {
         final data = todayList[index];
         bool isCompleted = ref.read(todoStateProvider.notifier).getStatus(data);
         dynamic color = ref.read(todoStateProvider.notifier).getRandomColor();
+
         return TodoTile(
+          delete: () {
+            ref.read(todoStateProvider.notifier).deleteTodo(data.id ?? 0);
+          },
+          editWidget: GestureDetector(
+            onTap: () {},
+            child: const Icon(MaterialCommunityIcons.circle_edit_outline),
+          ),
           color: color,
           title: data.title,
           description: data.description,
