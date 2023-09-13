@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../features/todo/controllers/todo/todo_provider.dart';
 import '../utils/constants.dart';
 import 'appstyle.dart';
 import 'reusable_text.dart';
@@ -23,12 +24,13 @@ class BottomTitles extends StatelessWidget {
           children: [
             Consumer(
               builder: (context, ref, child) {
+                var color =
+                    ref.read(todoStateProvider.notifier).getRandomColor();
                 return Container(
                   height: 80,
                   width: 5,
                   decoration: BoxDecoration(
-                      //TODO: dynamic colors
-                      color: AppConst.kGreen,
+                      color: color,
                       borderRadius:
                           BorderRadius.all(Radius.circular(AppConst.kRadius))),
                 );

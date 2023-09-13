@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../common/utils/constants.dart';
 import '../../../common/widgets/appstyle.dart';
 import '../../../common/widgets/reusable_text.dart';
 
-class TodoTile extends StatelessWidget {
+class TodoTile extends ConsumerWidget {
   final Color? color;
   final String? title;
   final String? description;
@@ -28,7 +29,7 @@ class TodoTile extends StatelessWidget {
       this.switcher});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: EdgeInsets.only(bottom: 8.h),
       child: Stack(
