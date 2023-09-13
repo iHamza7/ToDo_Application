@@ -8,6 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../common/widgets/custom_text_field.dart';
 import '../controllers/todo/todo_provider.dart';
+import '../widgets/completed_task.dart';
 import '../widgets/day_after_tomorrow.dart';
 import '../widgets/today_list.dart';
 import '../widgets/tomorrow_task.dart';
@@ -176,6 +177,7 @@ class _HomePageState extends ConsumerState<HomePage>
                     Container(
                       height: AppConst.kHeight * 0.3,
                       color: AppConst.kGreyBk,
+                      child: const CompletedTask(),
                     ),
                   ]),
                 ),
