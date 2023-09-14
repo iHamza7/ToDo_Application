@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../common/models/task_model.dart';
 import '../../../common/utils/constants.dart';
 import '../../../common/widgets/appstyle.dart';
 import '../../../common/widgets/custom_text_field.dart';
@@ -132,17 +131,14 @@ class _UpdateTaskState extends ConsumerState<UpdateTask> {
                       scheduleDate.isNotEmpty &&
                       startTime.isNotEmpty &&
                       finishTime.isNotEmpty) {
-                    TaskModel taskModel = TaskModel(
-                      title: title.text,
-                      description: description.text,
-                      isCompleted: 0,
-                      startTime: startTime.substring(10, 16),
-                      endTime: finishTime.substring(10, 16),
-                      date: scheduleDate,
-                      remind: 0,
-                      repeat: "yes",
-                    );
-                    ref.read(todoStateProvider.notifier).addItem(taskModel);
+                    ref.read(todoStateProvider.notifier).updateItem(
+                        widget.id,
+                        title.text,
+                        description.text,
+                        0,
+                        scheduleDate,
+                        startTime.substring(10, 16),
+                        finishTime.substring(10, 16));
                     ref.read(dateStateProvider.notifier).setDate('');
                     ref.read(startTimeStateProvider.notifier).setStart('');
                     ref.read(finishTimeStateProvider.notifier).setFinish('');

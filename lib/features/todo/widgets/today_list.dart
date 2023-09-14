@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import '../../../common/models/task_model.dart';
+import '../../../common/utils/constants.dart';
 import '../controllers/todo/todo_provider.dart';
 import '../pages/todo_tiles.dart';
 import '../pages/update_task.dart';
@@ -30,6 +31,8 @@ class TodyList extends ConsumerWidget {
           },
           editWidget: GestureDetector(
             onTap: () {
+              titles = data.title!;
+              descriptions = data.description!;
               Navigator.push(
                   context,
                   MaterialPageRoute(
