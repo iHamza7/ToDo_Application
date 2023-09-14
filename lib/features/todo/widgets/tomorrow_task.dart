@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import '../../../common/utils/constants.dart';
 import '../../../common/widgets/expansion_tile.dart';
 import '../controllers/todo/todo_provider.dart';
