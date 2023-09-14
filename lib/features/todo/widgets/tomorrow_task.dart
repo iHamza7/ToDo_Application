@@ -42,6 +42,8 @@ class TomorrowTask extends ConsumerWidget {
               },
               editWidget: GestureDetector(
                 onTap: () {
+                  titles = todos.title!;
+                  descriptions = todos.description!;
                   Navigator.push(
                       context,
                       MaterialPageRoute(

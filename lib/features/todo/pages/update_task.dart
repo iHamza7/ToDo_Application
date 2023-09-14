@@ -25,8 +25,9 @@ class UpdateTask extends ConsumerStatefulWidget {
 }
 
 class _UpdateTaskState extends ConsumerState<UpdateTask> {
-  final TextEditingController title = TextEditingController();
-  final TextEditingController description = TextEditingController();
+  final TextEditingController title = TextEditingController(text: titles);
+  final TextEditingController description =
+      TextEditingController(text: descriptions);
   @override
   Widget build(BuildContext context) {
     final scheduleDate = ref.watch(dateStateProvider);
