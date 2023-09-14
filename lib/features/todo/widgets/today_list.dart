@@ -4,6 +4,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import '../../../common/models/task_model.dart';
 import '../controllers/todo/todo_provider.dart';
 import '../pages/todo_tiles.dart';
+import '../pages/update_task.dart';
 
 class TodyList extends ConsumerWidget {
   const TodyList({super.key});
@@ -28,7 +29,14 @@ class TodyList extends ConsumerWidget {
             ref.read(todoStateProvider.notifier).deleteTodo(data.id ?? 0);
           },
           editWidget: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => UpdateTask(
+                            id: data.id!,
+                          )));
+            },
             child: const Icon(MaterialCommunityIcons.circle_edit_outline),
           ),
           color: color,

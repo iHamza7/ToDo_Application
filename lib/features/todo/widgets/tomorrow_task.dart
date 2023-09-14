@@ -7,6 +7,7 @@ import '../../../common/widgets/expansion_tile.dart';
 import '../controllers/todo/todo_provider.dart';
 import '../controllers/xpansion_provider.dart';
 import '../pages/todo_tiles.dart';
+import '../pages/update_task.dart';
 
 class TomorrowTask extends ConsumerWidget {
   const TomorrowTask({super.key});
@@ -40,7 +41,14 @@ class TomorrowTask extends ConsumerWidget {
                 ref.read(todoStateProvider.notifier).deleteTodo(todos.id ?? 0);
               },
               editWidget: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UpdateTask(
+                                id: todos.id!,
+                              )));
+                },
                 child: const Icon(MaterialCommunityIcons.circle_edit_outline),
               ),
               color: color,
