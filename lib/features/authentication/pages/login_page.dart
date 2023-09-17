@@ -6,7 +6,6 @@ import 'package:country_picker/country_picker.dart';
 import 'package:sqflite_application/common/widgets/reusable_text.dart';
 import '../../../common/widgets/custom_otline_btn.dart';
 import '../../../common/widgets/custom_text_field.dart';
-
 import '../../../common/widgets/appstyle.dart';
 import '../../../common/widgets/dialogue_bix.dart';
 import '../controllers/auth_controller.dart';
@@ -19,7 +18,7 @@ class LoginPage extends ConsumerStatefulWidget {
 }
 
 class _LoginPageState extends ConsumerState<LoginPage> {
-  final phone = TextEditingController();
+  final TextEditingController phone = TextEditingController();
   Country country = Country(
     phoneCode: "86",
     countryCode: "CN",
@@ -41,8 +40,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       return showAlertDialog(
           context: context, message: "Number must be greater than 8");
     } else {
+      print('+${country.phoneCode}${phone.text}');
       ref.read(authControllerProvider).sendOtp(
-          context: context, phone: '+${country.phoneCode}${phone.text}');
+            context: context,
+            phone: '+${country.phoneCode}${phone.text}',
+          );
     }
   }
 
@@ -75,6 +77,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             ),
             Center(
               child: CustomTextField(
+                controller: phone,
                 prefixIcon: Container(
                   padding: const EdgeInsets.all(14),
                   child: GestureDetector(
@@ -100,7 +103,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   ),
                 ),
                 hintText: "Enter your phone number",
-                controller: phone,
                 keyboardType: TextInputType.phone,
                 hintStyle: appstyle(16, AppConst.kBkDark, FontWeight.w600),
               ),
