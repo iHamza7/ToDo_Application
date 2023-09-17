@@ -9,7 +9,7 @@ import '../../../common/widgets/custom_text_field.dart';
 
 import '../../../common/widgets/appstyle.dart';
 import '../../../common/widgets/dialogue_bix.dart';
-import 'otp_page.dart';
+import '../controllers/auth_controller.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
@@ -21,15 +21,15 @@ class LoginPage extends ConsumerStatefulWidget {
 class _LoginPageState extends ConsumerState<LoginPage> {
   final phone = TextEditingController();
   Country country = Country(
-    phoneCode: "1",
-    countryCode: "US",
+    phoneCode: "86",
+    countryCode: "CN",
     e164Sc: 0,
     geographic: true,
     level: 1,
-    name: "USA",
-    example: "USA",
-    displayName: "United States",
-    displayNameNoCountryCode: "US",
+    name: "China",
+    example: "China",
+    displayName: "China",
+    displayNameNoCountryCode: "CN",
     e164Key: "",
   );
 
@@ -40,6 +40,9 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     } else if (phone.text.length < 6) {
       return showAlertDialog(
           context: context, message: "Number must be greater than 8");
+    } else {
+      ref.read(authControllerProvider).sendOtp(
+          context: context, phone: '+${country.phoneCode}${phone.text}');
     }
   }
 
@@ -79,14 +82,16 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       showCountryPicker(
                           context: context,
                           countryListTheme: CountryListThemeData(
-                              backgroundColor: AppConst.kLight,
+                              backgroundColor: AppConst.kGreyLight,
                               bottomSheetHeight: AppConst.kHeight * 0.6,
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(AppConst.kRadius),
                                 topRight: Radius.circular(AppConst.kRadius),
                               )),
                           onSelect: (code) {
-                            setState(() {});
+                            setState(() {
+                              country = code;
+                            });
                           });
                     },
                     child: ReusableText(
@@ -107,13 +112,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               padding: const EdgeInsets.all(10.0),
               child: CustomOutlineButton(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => OtpPage(
-                                  phone: phone.text,
-                                  smsCodeId: '',
-                                )));
+                    sendCodeToUser();
                   },
                   width: AppConst.kWidth * 0.8,
                   height: AppConst.kHeight * 0.07,
