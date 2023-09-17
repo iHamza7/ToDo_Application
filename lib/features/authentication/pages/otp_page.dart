@@ -7,7 +7,9 @@ import 'package:pinput/pinput.dart';
 import '../../../common/widgets/appstyle.dart';
 
 class OtpPage extends StatelessWidget {
-  const OtpPage({super.key});
+  final String smsCodeId;
+  final String phone;
+  const OtpPage({super.key, required this.smsCodeId, required this.phone});
 
   @override
   Widget build(BuildContext context) {

@@ -99,7 +99,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const OtpPage()));
+                            builder: (context) =>  OtpPage()));
                   },
                   width: AppConst.kWidth * 0.8,
                   height: AppConst.kHeight * 0.07,
