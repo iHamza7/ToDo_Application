@@ -8,6 +8,7 @@ import '../../../common/widgets/custom_otline_btn.dart';
 import '../../../common/widgets/custom_text_field.dart';
 
 import '../../../common/widgets/appstyle.dart';
+import '../../../common/widgets/dialogue_bix.dart';
 import 'otp_page.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -31,6 +32,16 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     displayNameNoCountryCode: "US",
     e164Key: "",
   );
+
+  sendCodeToUser() {
+    if (phone.text.isEmpty) {
+      return showAlertDialog(
+          context: context, message: "Please enter your phone number");
+    } else if (phone.text.length < 6) {
+      return showAlertDialog(
+          context: context, message: "Number must be greater than 8");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
