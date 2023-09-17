@@ -99,7 +99,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>  OtpPage()));
+                            builder: (context) => OtpPage(
+                                  phone: phone.text,
+                                  smsCodeId: '',
+                                )));
                   },
                   width: AppConst.kWidth * 0.8,
                   height: AppConst.kHeight * 0.07,
