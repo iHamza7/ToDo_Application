@@ -35,7 +35,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   sendCodeToUser() {
     if (phone.text.isEmpty) {
       return showAlertDialog(
-          context: context, message: "Please enter your phone");
+          context: context, message: "Please enter your phone number");
     } else if (phone.text.length < 6) {
       return showAlertDialog(
           context: context, message: "Number must be greater than 8");
