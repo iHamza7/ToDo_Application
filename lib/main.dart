@@ -41,7 +41,7 @@ class MyApp extends ConsumerWidget {
               builder: (lightColorScheme, darkColorScheme) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'ToDo Application a',
+              title: 'ToDo Application aa',
               theme: ThemeData(
                 scaffoldBackgroundColor: AppConst.kBkDark,
                 colorScheme: lightColorScheme ?? defaulLightColorScheme,
