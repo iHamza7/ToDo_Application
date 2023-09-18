@@ -9,9 +9,10 @@ import '../../../common/widgets/appstyle.dart';
 import '../controllers/auth_controller.dart';
 
 class OtpPage extends ConsumerWidget {
-  final String smsCodeId;
   final String phone;
-  const OtpPage({super.key, required this.smsCodeId, required this.phone});
+  final String smsCodeId;
+
+  const OtpPage({super.key, required this.phone, required this.smsCodeId});
 
   void verifyOtp(BuildContext context, WidgetRef ref, String smsCode) {
     ref.read(authControllerProvider).verifyOtp(

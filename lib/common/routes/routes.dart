@@ -23,8 +23,8 @@ class Routes {
         final Map args = settings.arguments as Map;
         return MaterialPageRoute(
             builder: (context) => OtpPage(
-                  smsCodeId: args['phone'],
                   phone: args['phone'],
+                  smsCodeId: args['smsCodeId'],
                 ));
       case home:
         return MaterialPageRoute(builder: (context) => const HomePage());

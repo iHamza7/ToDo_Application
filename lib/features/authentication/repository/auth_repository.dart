@@ -40,6 +40,7 @@ class AuthRepository {
   }) async {
     try {
       await _firebaseAuth.verifyPhoneNumber(
+          phoneNumber: phone,
           verificationCompleted: (PhoneAuthCredential credential) async {
             await _firebaseAuth.signInWithCredential(credential);
           },
@@ -51,8 +52,8 @@ class AuthRepository {
             Navigator.pushNamedAndRemoveUntil(
                 context, Routes.otp, (route) => false,
                 arguments: {
-                  "phone": phone,
-                  "smsCodeId": smsCodeId,
+                  'phone': phone,
+                  'smsCodeId': smsCodeId,
                 });
           },
           codeAutoRetrievalTimeout: (String smsCodeId) {});
