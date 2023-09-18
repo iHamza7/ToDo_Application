@@ -62,12 +62,41 @@ class NotificationsPage extends StatelessWidget {
                           const SizedBox(width: 15),
                         ],
                       ),
+                    ),
+                    const SizedBox(height: 10),
+                    ReusableText(
+                        text: "title:",
+                        style: appstyle(30, AppConst.kBkDark, FontWeight.bold)),
+                    const SizedBox(height: 10),
+                    Text(
+                      maxLines: 8,
+                      "title",
+                      textAlign: TextAlign.justify,
+                      style: appstyle(16, AppConst.kLight, FontWeight.normal),
                     )
                   ],
                 ),
               ),
             ),
           ),
+          Positioned(
+              right: 12,
+              top: -10,
+              child: Image.asset(
+                'assets/images/bell.png',
+                width: 70.w,
+                height: 70.h,
+              )),
+          Positioned(
+            bottom: -AppConst.kHeight * 0.142,
+            right: 0,
+            left: 0,
+            child: Image.asset(
+              'assets/images/notification.png',
+              width: AppConst.kWidth * 0.8,
+              height: AppConst.kHeight * 0.6,
+            ),
+          )
         ],
       )),
     );
