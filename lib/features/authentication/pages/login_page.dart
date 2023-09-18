@@ -40,7 +40,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       return showAlertDialog(
           context: context, message: "Number must be greater than 8");
     } else {
-      print('+${country.phoneCode}${phone.text}');
+      debugPrint('+${country.phoneCode}${phone.text}');
       ref.read(authControllerProvider).sendOtp(
             context: context,
             phone: '+${country.phoneCode}${phone.text}',
