@@ -97,7 +97,7 @@ class NotificationHelper {
           UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
       payload:
-          "${taskModel.title}|${taskModel.description}${taskModel.date}${taskModel.startTime}${taskModel.endTime}",
+          "${taskModel.title}|${taskModel.description}|${taskModel.date}|${taskModel.startTime}|${taskModel.endTime}",
     );
   }
 
