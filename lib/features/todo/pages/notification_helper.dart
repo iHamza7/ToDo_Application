@@ -29,7 +29,7 @@ class NotificationHelper {
             requestBadgePermission: false,
             onDidReceiveLocalNotification: onDidReceivedLocalNotification);
     const AndroidInitializationSettings androidInitializationSettings =
-        AndroidInitializationSettings("defaultIcon");
+        AndroidInitializationSettings("download");
     final InitializationSettings initializationSettings =
         InitializationSettings(
       android: androidInitializationSettings,
