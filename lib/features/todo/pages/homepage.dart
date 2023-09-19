@@ -13,6 +13,7 @@ import '../widgets/day_after_tomorrow.dart';
 import '../widgets/today_list.dart';
 import '../widgets/tomorrow_task.dart';
 import 'add_task.dart';
+import 'notification_helper.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -25,7 +26,19 @@ class _HomePageState extends ConsumerState<HomePage>
     with TickerProviderStateMixin {
   late final TabController tabController =
       TabController(length: 2, vsync: this);
+  late NotificationHelper notificationsHelper;
+  late NotificationHelper controller;
   final TextEditingController search = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    notificationsHelper = NotificationHelper(ref: ref);
+    Future.delayed(const Duration(seconds: 0), () {
+      controller = NotificationHelper(ref: ref);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     ref.watch(todoStateProvider.notifier).refresh();
