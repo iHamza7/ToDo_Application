@@ -37,6 +37,7 @@ class _HomePageState extends ConsumerState<HomePage>
     Future.delayed(const Duration(seconds: 0), () {
       controller = NotificationHelper(ref: ref);
     });
+    notificationsHelper.initilizeNotification();
   }
 
   @override
