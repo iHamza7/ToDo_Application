@@ -24,9 +24,9 @@ class NotificationHelper {
 
     final DarwinInitializationSettings initializationSettingsIOS =
         DarwinInitializationSettings(
-            requestAlertPermission: false,
-            requestSoundPermission: false,
-            requestBadgePermission: false,
+            requestAlertPermission: true,
+            requestSoundPermission: true,
+            requestBadgePermission: true,
             onDidReceiveLocalNotification: onDidReceivedLocalNotification);
     const AndroidInitializationSettings androidInitializationSettings =
         AndroidInitializationSettings("download");

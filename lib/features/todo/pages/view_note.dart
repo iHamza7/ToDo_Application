@@ -11,6 +11,11 @@ class NotificationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var title = payload!.split('|')[0];
+    var description = payload!.split('|')[1];
+    var date = payload!.split('|')[2];
+    var start = payload!.split('|')[3];
+    var finish = payload!.split('|')[4];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -56,21 +61,20 @@ class NotificationsPage extends StatelessWidget {
                                   14, AppConst.kBkDark, FontWeight.bold)),
                           const SizedBox(width: 15),
                           ReusableText(
-                              text: "Start:",
+                              text: "From: $start To: $finish",
                               style: appstyle(
                                   15, AppConst.kBkDark, FontWeight.w600)),
-                          const SizedBox(width: 15),
                         ],
                       ),
                     ),
                     const SizedBox(height: 10),
                     ReusableText(
-                        text: "title:",
+                        text: title,
                         style: appstyle(30, AppConst.kBkDark, FontWeight.bold)),
                     const SizedBox(height: 10),
                     Text(
+                      description,
                       maxLines: 8,
-                      "title",
                       textAlign: TextAlign.justify,
                       style: appstyle(16, AppConst.kLight, FontWeight.normal),
                     )

@@ -9,7 +9,7 @@ import 'common/routes/routes.dart';
 import 'common/utils/constants.dart';
 import 'features/authentication/controllers/user_controller.dart';
 import 'features/onboarding/pages/onboarding.dart';
-import 'features/todo/pages/view_note.dart';
+import 'features/todo/pages/homepage.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -53,8 +53,7 @@ class MyApp extends ConsumerWidget {
                 useMaterial3: true,
               ),
               themeMode: ThemeMode.dark,
-              home:
-                  user.isEmpty ? const OnBoarding() : const NotificationsPage(),
+              home: user.isEmpty ? const OnBoarding() : const HomePage(),
               onGenerateRoute: Routes.onGenerateRoute,
             );
           });
