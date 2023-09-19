@@ -129,7 +129,7 @@ class NotificationHelper {
                                       payload: payload,
                                     )));
                       },
-                      child: const Text('View t')),
+                      child: const Text('View')),
                 ],
               ));
     });
