@@ -10,8 +10,11 @@ import '../../../common/widgets/custom_otline_btn.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart'
     as picker;
 
+import '../../../common/widgets/dialogue_bix.dart';
 import '../controllers/dates/date_provider.dart';
 import '../controllers/todo/todo_provider.dart';
+import 'homepage.dart';
+import 'notification_helper.dart';
 
 class AddTask extends ConsumerStatefulWidget {
   const AddTask({super.key});
@@ -23,6 +26,20 @@ class AddTask extends ConsumerStatefulWidget {
 class _AddTaskState extends ConsumerState<AddTask> {
   final TextEditingController title = TextEditingController();
   final TextEditingController description = TextEditingController();
+  late NotificationHelper notificationsHelper;
+  late NotificationHelper controller;
+  List<int> notification = [];
+
+  @override
+  void initState() {
+    super.initState();
+    notificationsHelper = NotificationHelper(ref: ref);
+    Future.delayed(const Duration(seconds: 0), () {
+      controller = NotificationHelper(ref: ref);
+    });
+    notificationsHelper.initilizeNotification();
+  }
+
   @override
   Widget build(BuildContext context) {
     final scheduleDate = ref.watch(dateStateProvider);
@@ -87,6 +104,9 @@ class _AddTaskState extends ConsumerState<AddTask> {
                         ref
                             .read(startTimeStateProvider.notifier)
                             .setStart(date.toString());
+                        notification = ref
+                            .read(startTimeStateProvider.notifier)
+                            .dates(date);
                       }, locale: picker.LocaleType.en);
                     },
                     width: AppConst.kWidth * 0.4,
@@ -137,14 +157,24 @@ class _AddTaskState extends ConsumerState<AddTask> {
                       remind: 0,
                       repeat: "yes",
                     );
+                    notificationsHelper.scheduledNotification(
+                        notification[0],
+                        notification[1],
+                        notification[2],
+                        notification[3],
+                        taskModel);
                     ref.read(todoStateProvider.notifier).addItem(taskModel);
-                    ref.read(dateStateProvider.notifier).setDate('');
-                    ref.read(startTimeStateProvider.notifier).setStart('');
-                    ref.read(finishTimeStateProvider.notifier).setFinish('');
+                    // ref.read(dateStateProvider.notifier).setDate('');
+                    // ref.read(startTimeStateProvider.notifier).setStart('');
+                    // ref.read(finishTimeStateProvider.notifier).setFinish('');
 
-                    Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomePage()));
                   } else {
-                    debugPrint('please enter');
+                    showAlertDialog(
+                        context: context, message: "Failed to Add Task");
                   }
                 },
                 width: AppConst.kWidth * 0.4,
