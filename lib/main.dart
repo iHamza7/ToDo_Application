@@ -1,14 +1,13 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:dynamic_color/dynamic_color.dart';
 
 import 'common/models/user_model.dart';
 import 'common/routes/routes.dart';
 import 'common/utils/constants.dart';
 import 'features/authentication/controllers/user_controller.dart';
-import 'features/onboarding/pages/onboarding.dart';
 import 'features/todo/pages/homepage.dart';
 import 'firebase_options.dart';
 
@@ -53,7 +52,8 @@ class MyApp extends ConsumerWidget {
                 useMaterial3: true,
               ),
               themeMode: ThemeMode.dark,
-              home: user.isEmpty ? const OnBoarding() : const HomePage(),
+              home: const HomePage(),
+              // user.isEmpty ? const OnBoarding() : const HomePage()
               onGenerateRoute: Routes.onGenerateRoute,
             );
           });
